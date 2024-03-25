@@ -1,5 +1,8 @@
+import java.util.Scanner;
+
+
 public class ToDoList {
-    private User user;
+    private final User user;
     private boolean isRunning;
 
     /**
@@ -88,6 +91,10 @@ public class ToDoList {
         Scanner scanner = new Scanner(System.in);
         String description = scanner.nextLine();
         // TODO Now: Call the add(ToDoItem item) method of the user's to-do items list to add a new item
+        ToDoItem Item = new ToDoItem(description); //create a new item with the description given by the user.
+        user.getToDoItems().add(Item);                   // add the item to the users list of items.
+        System.out.println("Item added successfully."); //print successful message.
+
     }
 
     /**
@@ -99,6 +106,16 @@ public class ToDoList {
         Scanner scanner = new Scanner(System.in);
         int itemNumber = scanner.nextInt();
         // TODO Now: Set the isDone field of the item at the specified index to true
+        //check item number is in the user's index.
+        if (itemNumber >= 0 && itemNumber < user.getToDoItems().size()) {
+            ToDoItem item = user.getToDoItems().get(itemNumber); //get item from the user.
+            item.setDone(true); //set the field to true.
+            System.out.println("Item: " + itemNumber + " has been marked as done."); //print out the item has been set to done.
+        }
+        else {
+            System.out.println("Item number is outside of index range: This item does not exist. "); //if the item doesn't exist print error.
+        }
+
     }
 
     /**
@@ -110,6 +127,15 @@ public class ToDoList {
         Scanner scanner = new Scanner(System.in);
         int itemNumber = scanner.nextInt();
         // TODO Now: Set the isDone field of the item at the specified index to false
+        //check item number is in the user's index.
+        if (itemNumber >= 0 && itemNumber < user.getToDoItems().size()) {
+            ToDoItem item = user.getToDoItems().get(itemNumber); //get item from the user.
+            item.setDone(false); //set the field to false.
+            System.out.println("Item: " + itemNumber + " has been marked as not done."); //print out the item has been set to not done.
+        }
+        else {
+            System.out.println("Item number is outside of index range: This item does not exist. "); //if the item doesn't exist print error.
+        }
     }
 
     /**
@@ -121,6 +147,14 @@ public class ToDoList {
         Scanner scanner = new Scanner(System.in);
         int itemNumber = scanner.nextInt();
         // TODO Now: Remove the item at the specified index from the user's to-do items list
+        //check item number is in the user's index.
+        if (itemNumber >= 0 && itemNumber < user.getToDoItems().size()) {
+            user.getToDoItems().remove(itemNumber); //Remove the item from the user.
+            System.out.println("Item: " + itemNumber + " has been Removed."); //print out the item has been removed.
+        }
+        else {
+            System.out.println("Item number is outside of index range: This item does not exist. "); //if the item doesn't exist print error.
+        }
     }
 
     /**

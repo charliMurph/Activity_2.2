@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
 public class Main {
     // Static list of users, acting as a database
     private static ArrayList<User> users = new ArrayList<>();
@@ -74,7 +78,7 @@ public class Main {
         String password = scanner.nextLine();
         User user = authService.logIn(username, password);
         System.out.println("Welcome, " + user.getUsername() + "!");
-        // TODO Later: Add the to-do list operations
+        // TODO Now: Create an instance of the ToDoList class with the logged-in user and call the run method
     }
 
     /**
@@ -87,34 +91,14 @@ public class Main {
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
         User user = authService.signUp(username, password);
-        // TODO Later: Shows a message based on the result
+        // TODO Now: Show a message based on the result of the signUp method:
+        // - If the user is not null, show "User <username> has been created successfully!"
+        // - If the user is null, show "The username is already taken!"
     }
-
     /**
      * Exits the application by setting the `isRunning` flag to false.
      */
     public static void onExit() {
         isRunning = false;
-    }
-<<<<<<< HEAD
-    public static void onLogIn() {
-=======
-    public static void onSignUp() {
->>>>>>> authentication
-        System.out.print("Enter your username: ");
-        Scanner scanner = new Scanner(System.in);
-        String username = scanner.nextLine();
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
-<<<<<<< HEAD
-        User user = authService.logIn(username, password);
-        System.out.println("Welcome, " + user.getUsername() + "!");
-        // TODO Now: Create an instance of the ToDoList class with the logged-in user and call the run method
-=======
-        User user = authService.signUp(username, password);
-        // TODO Now: Show a message based on the result of the signUp method:
-        // - If the user is not null, show "User <username> has been created successfully!"
-        // - If the user is null, show "The username is already taken!"
->>>>>>> authentication
     }
 }
